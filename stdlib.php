@@ -1,6 +1,5 @@
 <?php #stdlib.php
 
-
 include 'csite.php';
 include 'cpage.php';
 
