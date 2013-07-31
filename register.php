@@ -10,7 +10,7 @@ $page = new cPage("Register");
 $site->setPage($page);
 
 
-if(isset($_POST['submitted']))  {
+if(isset($_POST['submitted']))	{
 			
 		if(empty($_POST['first_name']))	{
 				$content[]="You forgot to enter your first name.\n";
@@ -44,13 +44,13 @@ if(isset($_POST['submitted']))  {
 
 if(empty($content)) {
 	require_once('dbc.php');
-	$q = "INSERT INTO users (first_name, last_name, email, pass, registration_date) VALUES (:fn, :ln, :e, :p, NOW() )";
+	$q = "INSERT INTO users (first_name, last_name, email, pass, registration_date) VALUES (:fn, :ln, :e, SHA1(:p), NOW() )";
 	$ps = $pdo->prepare($q);
 	$params = array(
 				'fn' => $fn,
 				'ln' => $ln,
 				'e' => $e,
-				'p' => SHA1('$p')
+				'p' => $p
 				);
 	$r = $ps->execute($params);
 	if($r){
