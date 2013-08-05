@@ -14,10 +14,12 @@ require_once('dbc.php');
 
 $display = 5;
 
-if (isset($_GET['p']) && is_numeric($_GET['p'])){
+if (isset($_GET['p']) && is_numeric($_GET['p']))
+	{
 		$pages = $_GET['p'];
 	}
-	else{
+	else
+	{
 		$q = "SELECT COUNT(user_id) FROM users";
 		$ps = $pdo->prepare($q);
 		$ps->execute();
@@ -34,15 +36,18 @@ if (isset($_GET['p']) && is_numeric($_GET['p'])){
 			}
 	}
 
-if(isset($_GET['s']) && is_numeric($_GET['s']))	{
+if(isset($_GET['s']) && is_numeric($_GET['s']))
+	{
 		$start = $_GET['s'];
 	}
-	else	{
+	else
+	{
 		$start =0;
 	}
 $sort = (isset($_GET['sort'])) ? $_GET['sort'] : 'rd';
 
-switch($sort)	{
+switch($sort)
+	{
 		case 'ln':
 			$order_by = 'last_name ASC';
 			break;
@@ -71,7 +76,8 @@ $content[] = '<table align="center" cellspacing="0" cellpadding="5" width="75%">
 		<td align="left"><b><a href="view_users.php?sort=rd">Date Registered</a></b></td>
 		</tr>';	
 $bg = '#eeeeee';
-while ($row = $ps->fetch(PDO::FETCH_ASSOC))	{
+while ($row = $ps->fetch(PDO::FETCH_ASSOC))
+	{
 		$bg = ($bg=='#eeeeee' ? '#ffffff' : '#eeeeee');
 		
 		$content[] = '<tr bgcolor="' . $bg . '">
@@ -84,13 +90,16 @@ while ($row = $ps->fetch(PDO::FETCH_ASSOC))	{
 	}
 $content[] = '</table>';
 
-if($pages>1){
+if($pages>1)
+	{
 		$content[] = '<br /><p>';
 		$current_page = ($start/$display)+1;
-		if($current_page != 1){
+		if($current_page != 1)
+			{
 				$content[] = '<a href="view_users.php?s=' .($start - $display) . '&p=' . $pages . '&sort=' . $sort . '">Previous</a> ';
 			}
-		for($i=1; $i<=$pages; $i++)	{
+		for($i=1; $i<=$pages; $i++)
+			{
 				if($i != $current_page)
 					{
 						$content[] = '<a href="view_users.php?s=' .(($display * ($i - 1))) . '&p=' . $pages . '&sort=' . $sort . '">' . $i . '</a> ';					}
@@ -99,7 +108,8 @@ if($pages>1){
 						$content[] = $i.' ';
 					}
 			}
-		if($current_page != $pages)	{
+		if($current_page != $pages)
+			{
 				$content[] = '<a href="view_users.php?s=' .($start + $display) . '&p=' . $pages . '&sort=' . $sort . '">Next</a>';
 			}
 		 $content[] = '</p>';
