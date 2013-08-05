@@ -19,7 +19,7 @@ elseif(($_POST['id']) && is_numeric($_POST['id'])){
 else{
 		$content[] = '<p class="error">This page has been accessed in error.</p>';
 		$page->SetContent($content);
-		$site->render();
+		$site
 		exit();
 	}
 
@@ -50,30 +50,37 @@ if(isset($_POST['submitted'])){
 		$params = array('e' => $e, 'id'=>$id);
 		$ps->execute($params);
 		if($ps->rowCount() == 0){
-			$q = "UPDATE users SET first_name=:fn, last_name=:ln, email=:e WHERE user_id=:id LIMIT 1";
+			$q = "UPDATE users SET first_name=':fn', last_name=':ln', email=':e' WHERE user_id=:id LIMIT 1";
 			$ps = $pdo->prepare($q);
-			$params = array('fn' => $fn, 'ln' => $ln, 'e' => $e, 'id' => $id);
-			$ps->execute($params);
-			if( $ps->rowCount() == 1) {
-				$content[]= '<p>The user has been edited.</p>';
+			$params = array('fn'=>$fn, 'ln'=>$ln, 'e'=>$e, 'id'=>$id);
+			ps->excuter($params);
+			if(mysqli_affected_rows($dbc) == 1)	{
+				echo '<p>The user has been edited.</p>';
 			}
 			else{
-				$content[]= '<p class="error">The user could not be edited due to a system error. We apologize for any inconvenience.</p>';
+				echo '<p class="error">The user could not be edited due to a system error. We apologize for any inconvenience.</p>';
+				echo '<p>' . mysqli_error($dbc) . '<br />Query: ' . $q . '</p>';
 			}
 		}
 		else{
-			$content[]= '<p class="error">Email is already registered!</p>';
+			echo '<p class="error">Email is already registered!</p>';
 		}
+		
+	}
+	else{
+		echo '<p class="error">The following error(s) occurred:<br />';
+		foreach($errors as $msg){
+			echo " - $msg<br />\n";
+		}
+		echo 'Please try again!';
 	}
 }
 
-$q = "SELECT first_name, last_name, email FROM users WHERE user_id=:id";
-$ps = $pdo->prepare($q);
-$params = array('id'=>$id);
-$ps->execute($params);
-if( $ps->rowCount() == 1) {
-	$row = $ps->fetch(PDO::FETCH_NUM);
-	$content[] = '<form action="edit_user.php" method="post">
+$q = "SELECT first_name, last_name, email FROM users WHERE user_id=$id";
+$r = mysqli_query($dbc, $q);
+if(mysqli_num_rows($r) == 1){
+	$row = mysqli_fetch_array($r, MYSQLI_NUM);
+	echo '<form action="edit_user.php" method="post">
 <p>First Name: <input type="text" name="first_name" size="15" maxlength="15" value="' . $row[0] . '" /></p>
 <p>Last Name: <input type="text" name="last_name" size="15" maxlength="30" value="' . $row[1] . '" /></p>
 <p>Email Address: <input type="text" name="email" size="20" maxlength="40" value="' . $row[2] . '"  /> </p>
@@ -84,11 +91,10 @@ if( $ps->rowCount() == 1) {
 
 } 
 else{ 
-	$content[] = '<p class="error">This page has been accessed in error.</p>';
+	echo '<p class="error">This page has been accessed in error.</p>';
 }
 
-$page->setContent($content);
-
-$site->render();
-
+mysqli_close($dbc);
+		
+include ('includes/footer.html');
 ?>

@@ -9,14 +9,16 @@ function initialise_site(csite $site) {
 	$site->addFooter("footer.php");
 }
 
-function absolute_url($urlpage='index.php'){
+function absolute_url($urlpage='index.php')
+{
 		$url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
 		$url = rtrim($url, '/\\');
 		$url .='/'.$urlpage;
 		return $url;
 }
 
-function check_login($pdo, $email='', $pass=''){
+function check_login($pdo, $email='', $pass='')
+{
 		if(empty($email)) {
 			$errors = array();
 			$errors[]='You forgot to enter your email address!';

@@ -1,6 +1,6 @@
 <?php #cpage.php
 
-  class cpage {
+	class cpage {
 		private $title;
 		private $content = array();
 

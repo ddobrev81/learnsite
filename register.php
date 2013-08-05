@@ -68,11 +68,11 @@ else{
 
 $content[] = <<<HTML
 <form action="register.php" method="post">
-<p>First Name: <input type="text" name="first_name" size="15" maxlength="20" /></p>
-<p>Last Name: <input type="text" name="last_name" size="15" maxlength="20" /></p>
-<p>Email Address: <input type="text" name="email" size="20" maxlength="80"  /> </p>
-<p>Password: <input type="password" name="pass1" size="10" maxlength="20" /></p>
-<p>Confirm Password: <input type="password" name="pass2" size="10" maxlength="20" /></p>
+<p><input type="text" name="first_name" placeholder="First Name" size="30" maxlength="20" /></p>
+<p><input type="text" name="last_name" placeholder="Last Name" size="30" maxlength="20" /></p>
+<p><input type="text" name="email" placeholder="Email Address" size="30" maxlength="80"  /> </p>
+<p><input type="password" name="pass1" placeholder="Password" size="30" maxlength="20" /></p>
+<p><input type="password" name="pass2" placeholder="Confirm Password" size="30" maxlength="20" /></p>
 <p><input type="submit" name="submit" value="Register" /></p>
 <input type="hidden" name="submitted" value="TRUE"/>
 </form>

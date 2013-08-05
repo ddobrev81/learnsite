@@ -9,7 +9,7 @@ $site->setPage($page);
 
 
 if( isset($_POST['submitted'])) {
-  if( empty($_POST['email'])) {
+	if( empty($_POST['email'])) {
 		$content[]='You did not enter your email address';
 	}else{
 		$e = trim($_POST['email']);
@@ -55,10 +55,10 @@ if( isset($_POST['submitted'])) {
 }
 $content[] = <<<HTML
 <form action="password.php" method="post">
-<p>Email Address: <input type="text" name="email" size="20" maxlength="80" /> </p>
-<p>Current Password: <input type="password" name="pass" size="10" maxlength="20" /></p>
-<p>New Password: <input type="password" name="pass1" size="10" maxlength="20" /></p>
-<p>Confirm New Password: <input type="password" name="pass2" size="10" maxlength="20" /></p>
+<p><input type="text" name="email" size="30" placeholder="Email Address" maxlength="80" /> </p>
+<p><input type="password" name="pass" size="30" placeholder="Current Password" maxlength="20" /></p>
+<p><input type="password" name="pass1" size="30" placeholder="New Password" maxlength="20" /></p>
+<p><input type="password" name="pass2" size="30" placeholder="Confirm New Password"" maxlength="20" /></p>
 <p><input type="submit" name="submit" value="Change Password" /></p>
 <input type="hidden" name="submitted" value="TRUE" />
 </form>

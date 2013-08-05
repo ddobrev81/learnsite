@@ -15,7 +15,7 @@ require_once('dbc.php');
 $display = 5;
 
 if (isset($_GET['p']) && is_numeric($_GET['p'])){
-  	$pages = $_GET['p'];
+		$pages = $_GET['p'];
 	}
 	else{
 		$q = "SELECT COUNT(user_id) FROM users";

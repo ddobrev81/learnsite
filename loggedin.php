@@ -3,7 +3,7 @@ session_start();
 include('stdlib.php');
 
 if(!isset($_SESSION['user_id']))
-  {
+	{
 		$url = absolute_url();
 		header("Location: $url");
 		exit();

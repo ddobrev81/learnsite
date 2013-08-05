@@ -6,10 +6,10 @@ $site = new csite();
 
 initialise_site($site);
 
-$page = new cpage("Welcome");
+$page = new cpage("Under Contruction!");
 $site->setPage($page);
 
-$content[] ='<br>The code for this site can be found <a href="https://github.com/ddobrev81/learnsite">here.</a>';
+$content[] ='<br>Under Contruction! Coming Soon™';
 
 $page->setContent($content);
 

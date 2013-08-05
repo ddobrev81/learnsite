@@ -1,8 +1,8 @@
 <?php #dbc.php
 
 $dbc = "mysql:host=mysql8.000webhost.com;dbname=a4962218_learn";
-$login="a4962218_";
-$password="";
+$login="a4962218_ddod";
+$password="xaxaxa123";
 $opt = array(
     // any occurring errors wil be thrown as PDOException
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

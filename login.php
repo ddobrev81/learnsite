@@ -7,7 +7,7 @@ $page = new cpage("Login");
 $site->setPage($page);
 
 if( isset($_POST['submitted'])) {
-  	require_once('dbc.php');
+		require_once('dbc.php');
 		list($check, $data) = check_login($pdo, $_POST['email'], $_POST['pass']);
 		if($check) {
 				#setcookie('user_id', $data['user_id'], time()+3600, '/', '', 0, 0);
@@ -36,11 +36,15 @@ if(!empty($errors)) {
 
 $content[] ='
 <form action="login.php" method="post">
-	<p>Email Address: <input type="text" name="email" size=20 maxlength=20 /></p>
-	<p>Password: <input type="password" name="pass" size=20 maxlength=20 /></p>
+	<p><input type="text" name="email" placeholder="Email Address"size=20 maxlength=20 /></p>
+	<p><input type="password" name="pass" placeholder="Password" size=20 maxlength=20 /></p>
 	<p><input type="submit" name="submit" value="Login" /></p>
 	<input type="hidden" name="submitted" value="TRUE"/>
 </form>
+<br><br>
+<p>If you dont have an account, register <a href="register.php">here.</a></p>
+<p>You can view/edit/delete users <a href="view_users.php">here.</a></p>
+<p>Change your password - <a href="password.php">here.</a></p>
 ';
 
 $page->setContent($content);

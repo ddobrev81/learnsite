@@ -1,7 +1,7 @@
 <?php #csite.php
 
 class csite {
-  private $headers;
+	private $headers;
 	private $footers;
 	private $page;
 

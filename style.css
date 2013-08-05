@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 * {
-  border:0;
+	border:0;
 	margin:0;
 	padding:0;
 }
@@ -12,17 +12,36 @@ a {
 	text-decoration:none;
 }
 
+input {
+    border:1px solid;
+    padding: 4px;
+    border-color:#CCCCCC;
+}
+
 a:hover {
 	color:#333;
 	text-decoration:none;
 }
 
+html{
+height: 100%;
+}
+
+
 /* body */
 body {
+	height: 100%;
 	background:#fafafa;
 	color:#555;
 	font:0.8em Arial, Helvetica, "bitstream vera sans", sans-serif;
 }
+
+/* user */
+#user {
+    font-size:75%;
+    text-align:left;
+    }
+
 
 /* header */
 #header {
@@ -93,18 +112,41 @@ body {
 	padding:20px 20px 0;
 }
 
+.wrapper {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+margin: 0 auto -4em;
+}
+
+.push {
+height: 4em;
+}
+
 /* footer */
-#footer {
+.footer {
 	border-top:1px solid #999; 
-	height:50px;
+	height: 4em;
 	margin:0 auto;
-	padding:10px;
+	/*padding:10px;*/
 	text-align:center;
 	width:751px;
 }
 
-/* Added by Larry Ullman: */
+
 .error {
 	font-weight: bold;
 	color: #C00
+}
+
+textarea {
+    background: white;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #DDD inset;
+    color: #666;
+    padding: 5px 10px;
+    width: 500px;
+    height:60px;
+    outline: none;
 }
